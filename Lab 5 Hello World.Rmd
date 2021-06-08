@@ -3,31 +3,69 @@ title: "Lab5Doc"
 author: "James Boyle"
 date: "07/06/2021"
 output: github_document
+always_allow_html: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, comment = NA, message = FALSE, warning = FALSE)
 ```
 
-## R Markdown
-
-
-testing
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r, eval = TRUE}
+library(ggplot2)
+library(dplyr)
+library(moderndive)
+library(gapminder)
+library(skimr)
+library(kableExtra)
+library(gridExtra)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+## Introduction {#sec:intro}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+This is a test using GitHub. I will also use it to make a report using some data. I will use the evals data to create some stuff.
+
+
+## Exploratory data analysis {#sec:eda}
+
+First of all, here is a pointless link to the introduction, just to show I can do it \ref{sec:intro}  
+
+Not worked for some reason. Anyway. This report will look for a relationship between beauty score and ethnicity using the evals data.  
+It is not written in a professional manner. It's just practice.
+
+```{r data}
+evals.bea.eth <- evals %>%
+  select(bty_avg, ethnicity)
+
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+First of all, some summary statistics.
+
+```{r sum}
+evals.bea.eth %>%
+  group_by(ethnicity) %>%
+  summarise(n=n(),  MeanHeart=round(mean(bty_avg),2), SDHeart=round(sd(bty_avg),2), FQ=quantile(bty_avg, 0.25),
+            TQ=quantile(bty_avg, 0.75),
+            min = min(bty_avg), max=max(bty_avg),
+            median=median(bty_avg)) %>%
+  kable(col.names = c("Ethnicity","Number", "Beauty score", "SD", "1st Q", "3rd Q", "Min.", "Max","Median"),        
+        caption = '\\label{tab:summary} Summary statistics on beauty score by ethnicity.') %>%
+  kable_styling(font_size = 10, latex_options = "hold_position")
+
+```
+
+This does not really show much interesting.
+
+
+Now look at some boxplots
+
+
+
+```{r, eval = TRUE, out.width = '80%', fig.align = "center", fig.cap = "\\label{fig:scat} Beauty for ethnicity.", fig.pos = "H"}
+ggplot(data = evals.bea.eth, mapping = aes(x = factor(ethnicity), 
+                                     y = bty_avg)) + geom_boxplot(fill = "steelblue") + 
+  labs(x = "Ethnicity", y = "Beauty score", title = "Beauty score and ethnicity")  + scale_x_discrete(labels = c("minority", "not minority"))
+```
+
+

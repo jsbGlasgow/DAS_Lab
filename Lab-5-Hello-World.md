@@ -3,35 +3,226 @@ Lab5Doc
 James Boyle
 07/06/2021
 
-## R Markdown
+## Introduction
 
-testing
+This is a test using GitHub. I will also use it to make a report using
+some data. I will use the evals data to create some stuff.
 
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
+## Exploratory data analysis
 
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+First of all, here is a pointless link to the introduction, just to show
+I can do it 
 
-``` r
-summary(cars)
-```
+Not worked for some reason. Anyway. This report will look for a
+relationship between beauty score and ethnicity using the evals data.  
+It is not written in a professional manner. It’s just practice.
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+First of all, some summary statistics.
 
-## Including Plots
+<table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 
-You can also embed plots, for example:
+<caption style="font-size: initial !important;">
 
-![](Lab-5-Hello-World_files/figure-gfm/pressure-1.png)<!-- -->
+Summary statistics on beauty score by ethnicity.
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Ethnicity
+
+</th>
+
+<th style="text-align:right;">
+
+Number
+
+</th>
+
+<th style="text-align:right;">
+
+Beauty score
+
+</th>
+
+<th style="text-align:right;">
+
+SD
+
+</th>
+
+<th style="text-align:right;">
+
+1st Q
+
+</th>
+
+<th style="text-align:right;">
+
+3rd Q
+
+</th>
+
+<th style="text-align:right;">
+
+Min.
+
+</th>
+
+<th style="text-align:right;">
+
+Max
+
+</th>
+
+<th style="text-align:right;">
+
+Median
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+minority
+
+</td>
+
+<td style="text-align:right;">
+
+64
+
+</td>
+
+<td style="text-align:right;">
+
+4.58
+
+</td>
+
+<td style="text-align:right;">
+
+1.47
+
+</td>
+
+<td style="text-align:right;">
+
+3.333
+
+</td>
+
+<td style="text-align:right;">
+
+5.08325
+
+</td>
+
+<td style="text-align:right;">
+
+2.333
+
+</td>
+
+<td style="text-align:right;">
+
+7.833
+
+</td>
+
+<td style="text-align:right;">
+
+4.333
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+not minority
+
+</td>
+
+<td style="text-align:right;">
+
+399
+
+</td>
+
+<td style="text-align:right;">
+
+4.39
+
+</td>
+
+<td style="text-align:right;">
+
+1.54
+
+</td>
+
+<td style="text-align:right;">
+
+3.167
+
+</td>
+
+<td style="text-align:right;">
+
+5.50000
+
+</td>
+
+<td style="text-align:right;">
+
+1.667
+
+</td>
+
+<td style="text-align:right;">
+
+8.167
+
+</td>
+
+<td style="text-align:right;">
+
+4.333
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+This does not really show much interesting.
+
+Now look at some boxplots
+
+<div class="figure" style="text-align: center">
+
+<img src="Lab-5-Hello-World_files/figure-gfm/unnamed-chunk-3-1.png" alt="\label{fig:scat} Beauty for ethnicity." width="80%" />
+
+<p class="caption">
+
+Beauty for ethnicity.
+
+</p>
+
+</div>
